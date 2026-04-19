@@ -25,6 +25,9 @@
 	/* code */
 	--color-code-text: #333333;
 
+	/* highlight */
+	--color-highlight: #fff176;
+
 	/* misc */
 	--box-shadow:
 		0 2px 6px rgba(96, 115, 159, 25%), 0 8px 24px rgba(96, 115, 159, 33%),
@@ -48,6 +51,9 @@
 		--color-border: #333333;
 
 		--color-code-text: #d4d4d4;
+
+		/* highlight */
+		--color-highlight: #c4b31e;
 	}
 }
 body {
@@ -76,7 +82,7 @@ h5,
 h6 {
 	margin: 0 0 0.5rem 0;
 	color: var(--color-text);
-	line-height: 1.2;
+	line-height: 1.5;
 }
 h1 {
 	font-size: 3.052em;
@@ -88,7 +94,8 @@ h3 {
 	font-size: 1.953em;
 }
 h4 {
-	font-size: 1.563em;
+	font-size: 1.5em;
+	font-weight: 600;
 }
 h5 {
 	font-size: 1.25em;
@@ -176,4 +183,9 @@ hr {
 	clip-path: inset(50%);
 	/* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
 	white-space: nowrap;
+}
+
+::selection {
+	background-color: var(--color-highlight);
+	color: var(--color-code-text);
 }

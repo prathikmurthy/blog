@@ -61,6 +61,16 @@ posts.forEach((post) => {
         color: var(--color-link);
       }
 
+      .post-tags {
+        color: var(--color-text-muted);
+        font-size: 0.875em;
+      }
+
+      .post-info {
+        display: flex;
+        gap: 1em;
+      }
+
 
     </style>
     <main>
@@ -78,9 +88,14 @@ posts.forEach((post) => {
                     <span class="post-date">
                       <FormattedDate date={new Date(post.data.pubDate)} />
                     </span>
-                    <a href={`/blog/${post.id}/`}>
-                      <h4 class="post-title">{post.data.title}</h4>
-                    </a>
+                    <div class="post-info">
+                      <a href={`/blog/${post.id}/`}>
+                        <h4 class="post-title">{post.data.title}</h4>
+                      </a>
+                      <span class="post-tags">
+                        {post.data.tags?.map((tag) => `#${tag} `)}
+                      </span>
+                    </div>
                   </>
                 ))}
               </>
