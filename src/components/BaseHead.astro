@@ -5,6 +5,7 @@ import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/blog-placeholder-1.jpg';
 import { SITE_TITLE } from '../consts';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	title: string;
@@ -36,6 +37,7 @@ const { title, description } = Astro.props;
 	href={new URL('rss.xml', Astro.site)}
 />
 <meta name="generator" content={Astro.generator} />
+<ClientRouter />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
