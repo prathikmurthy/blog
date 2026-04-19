@@ -9,7 +9,7 @@ import FormattedDate from "../components/FormattedDate.astro";
 //   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 // );
 
-let posts = await getCollection("blog");
+let posts = (await getCollection("blog")).filter((post) => !post.data.draft);
 let map: Record<number, typeof posts> = {};
 
 posts.forEach((post) => {
@@ -29,9 +29,6 @@ posts.forEach((post) => {
   </head>
   <body>
     <style>
-      main {
-        width: 800px;
-      }
       .post-list {
         display: grid;
         grid-template-columns: 6em 1fr; 

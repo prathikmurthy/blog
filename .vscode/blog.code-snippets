@@ -1,0 +1,17 @@
+{
+  "Blog frontmatter": {
+    "scope": "markdown,mdx",
+    "prefix": "fm",
+    "body": [
+      "---",
+      "title: \"$1\"",
+      "description: \"$2\"",
+      "pubDate: \"${3:${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}}\"",
+      "draft: true",
+      "---",
+      "",
+      "$0"
+    ],
+    "description": "Blog post frontmatter"
+  }
+}

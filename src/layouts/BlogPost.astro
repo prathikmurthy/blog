@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import FormattedDate from "../components/FormattedDate.astro";
+import Header from "../components/Header.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -13,11 +14,6 @@ const { title, description, pubDate, updatedDate } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
     <style>
-      main {
-        width: calc(100% - 2em);
-        max-width: 100%;
-        margin: 0;
-      }
       .hero-image {
         width: 100%;
       }
@@ -28,24 +24,23 @@ const { title, description, pubDate, updatedDate } = Astro.props;
         box-shadow: var(--box-shadow);
       }
       .prose {
-        width: 720px;
-        max-width: calc(100% - 2em);
-        margin: auto;
-        padding: 1em;
         color: var(--color-text);
       }
       .title {
-        margin-bottom: 1em;
-        padding: 1em 0;
+        margin-top: 1em;
+        /* padding: 1em 0; */
         text-align: left;
         line-height: 1;
       }
       .title h2 {
-        margin-bottom: 0.5em;
-        font-weight: 400;
+        /* margin-bottom: 0.5em; */
+        font-weight: 500;
+        margin-left: -0.1em;
       }
       .date {
-        margin-bottom: 0.5em;
+        /* margin-bottom: 0.5em; */
+        /* margin-left: 0.1em; */
+        margin-top: 2em;
         color: var(--color-text-muted);
       }
       .last-updated-on {
@@ -60,6 +55,7 @@ const { title, description, pubDate, updatedDate } = Astro.props;
 
   <body>
     <main>
+      <Header />
       <article>
         <div class="prose">
           <div class="title">
@@ -74,7 +70,6 @@ const { title, description, pubDate, updatedDate } = Astro.props;
               }
             </div>
             <h2>{title}</h2>
-            <hr />
           </div>
           <slot />
         </div>
