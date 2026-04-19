@@ -1,0 +1,59 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="About" description="About me" />
+  </head>
+  <body>
+    <style>
+      h4 {
+        margin-bottom: 1em;
+      }
+      .links {
+        display: flex;
+        gap: 1.5em;
+        margin-top: 1em;
+      }
+      .links a {
+        color: var(--color-link);
+        text-decoration: none;
+      }
+      .links a:hover {
+        color: var(--color-link-hover);
+      }
+    </style>
+    <main>
+      <Header />
+      <div class="prose">
+        <h4>about me</h4>
+        <p>
+          Hi, I'm Prathik. I'm a full-stack software engineer at Procter & Gamble in Cincinnati. I'm also an alumni of the University of Michigan.
+        </p>
+        <p>
+          This was made as a place to store thoughts, some related to software engineering and some not.
+        </p>
+        <div class="links">
+          <a
+            href="https://www.linkedin.com/in/prathikmurthy/"
+            target="_blank"
+            rel="noopener noreferrer">linkedin</a
+          >
+          <a
+            href="https://github.com/prathikmurthy"
+            target="_blank"
+            rel="noopener noreferrer">github</a
+          >
+          <a
+            href="https://prathikm.dev"
+            target="_blank"
+            rel="noopener noreferrer">website</a
+          >
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
