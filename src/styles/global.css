@@ -4,6 +4,8 @@
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
 
+ @import url("https://fonts.bunny.net/css?family=charter:400,400i,700,700i&display=swap");
+
 :root {
 	/* backgrounds */
 	--color-bg: #fafafa;
@@ -24,9 +26,15 @@
 
 	/* code */
 	--color-code-text: #333333;
+	/* CHANGED: added accent color for inline code + h3, used consistently throughout */
+	--color-accent: #b83280;
+	/* CHANGED: blockquote tint, subtle so prose blockquotes aren't aggressive */
+	--color-blockquote-bg: rgba(55, 94, 171, 0.06);
 
 	/* highlight */
 	--color-highlight: #fff176;
+	/* CHANGED: explicit selection text color so light-on-yellow doesn't happen */
+	--color-highlight-text: #1a1a1a;
 
 	/* misc */
 	--box-shadow:
@@ -51,29 +59,43 @@
 		--color-border: #333333;
 
 		--color-code-text: #d4d4d4;
+		/* CHANGED: lighter accent that pops on dark */
+		--color-accent: #f0abfc;
+		--color-blockquote-bg: rgba(122, 162, 212, 0.08);
 
-		/* highlight */
 		--color-highlight: #c4b31e;
+		--color-highlight-text: #1a1a1a;
 	}
 }
+
 body {
-	font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+	font-family: "Charter", "Iowan Old Style", "Palatino Linotype", "Palatino", Georgia, serif;
+	font-size: 18px;
+	line-height: 1.7;
 	margin: 0;
 	padding: 0;
 	text-align: left;
 	background-color: var(--color-bg);
+	color: var(--color-text);
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	color: var(--color-text);
-	font-size: 16px;
-	line-height: 1.7;
 }
+
+code,
+pre,
+kbd,
+samp {
+	font-family: ui-monospace, "SF Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+}
+
+
 main {
 	width: 800px;
 	max-width: calc(100% - 2em);
 	margin: auto;
 	padding: 3em 1em;
 }
+
 h1,
 h2,
 h3,
@@ -88,7 +110,7 @@ h1 {
 	font-size: 3.052em;
 }
 h2 {
-	font-size: 2.441em;
+	font-size: 2.5em;
 }
 h3 {
 	font-size: 1.953em;
@@ -100,27 +122,38 @@ h4 {
 h5 {
 	font-size: 1.25em;
 }
+
 strong,
 b {
 	font-weight: 700;
 }
+
 a {
 	color: inherit;
 	text-decoration: none;
 }
+
 .prose a {
 	color: var(--color-link);
 	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-underline-offset: 2px;
 }
+
 .prose a:hover {
 	color: var(--color-link-hover);
 }
+
 p {
 	margin-bottom: 1em;
 }
+
+/* CHANGED: 2em was creating excessive vertical rhythm. 1.25em sits better
+   with line-height 1.7. */
 .prose p {
-	margin-bottom: 2em;
+	margin-bottom: 1.25em;
 }
+
 textarea {
 	width: 100%;
 	font-size: 16px;
@@ -136,24 +169,44 @@ img {
 	height: auto;
 	border-radius: 8px;
 }
+
 code {
-	padding: 2px 5px;
+	padding: 0.15em 0.4em;
 	background-color: var(--color-bg-code);
-	border-radius: 2px;
+	color: var(--color-accent);
+	border-radius: 4px;
+	font-size: 0.9em;
+	border: 1px solid var(--color-border);
 }
 pre {
-	padding: 1.5em;
+	padding: 1.25em;
 	border-radius: 8px;
+	border: 1px solid var(--color-border);
+	background-color: var(--color-bg-code);
+	overflow-x: auto;
+	margin: 1.5em 0;
+	font-size: 0.9em;
+	line-height: 1.5;
 }
-pre > code {
+pre>code {
 	all: unset;
+	font-family: inherit;
 }
 blockquote {
-	border-left: 4px solid var(--color-link);
-	padding: 0 0 0 20px;
+	border-left: 3px solid var(--color-link);
+	background: var(--color-blockquote-bg);
+	padding-left: 1em;
+	padding-right: 1em;
 	margin: 0;
-	font-size: 1.333em;
+	border-radius: 0 6px 6px 0;
+	font-style: italic;
+	color: var(--color-text-muted);
 }
+
+blockquote p:last-child {
+	margin-bottom: 0;
+}
+
 hr {
 	border: none;
 	border-top: 1px solid var(--color-border);
@@ -188,4 +241,35 @@ hr {
 ::selection {
 	background-color: var(--color-highlight);
 	color: var(--color-code-text);
+}
+
+.note {
+	color: var(--color-text-muted);
+	font-style: italic;
+	font-size: 0.95em;
+	border-left: 2px solid var(--color-border);
+	padding-left: 1em;
+	margin: 1.5em 0;
+}
+
+.note strong {
+	font-style: normal;
+	color: var(--color-text);
+}
+
+.note code {
+	font-style: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	/* background: none;
+	border: none; */
+	padding: 0 0.25em 0 0.25em;
+	font-size: 0.6em;
+	/* color: inherit; */
 }

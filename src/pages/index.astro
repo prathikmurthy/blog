@@ -80,7 +80,7 @@ posts.forEach((post) => {
               <>
                 <span class="post-year">{year}</span>
                 <span></span>
-                {map[Number(year)].map((post) => (
+                {map[Number(year)].sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()).map((post) => (
                   <>
                     <span class="post-date">
                       <FormattedDate date={new Date(post.data.pubDate)} />
